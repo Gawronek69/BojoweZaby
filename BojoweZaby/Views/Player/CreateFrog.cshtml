@@ -1,0 +1,29 @@
+
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="form-container">
+    <h2>Create Your Frog</h2>
+
+    <form method="post" asp-area="" asp-action="CreateFrog" asp-controller="Player">
+        <div class="form-group">
+            <label for="Name">Frog Name</label>
+            <input type="text" id="Name" name="Name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="ClassId">Frog Class</label>
+            <select id="ClassId" name="ClassId" required>
+                @foreach (var frogClass in ViewBag.ClassTypes)
+                {   
+                    <option value="@frogClass">@frogClass</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit">Create Frog</button>
+            <a  asp-area="" asp-controller="Player" asp-action="Dashboard"  class="cancel-link">Cancel</a>
+        </div>
+    </form>
+</div>

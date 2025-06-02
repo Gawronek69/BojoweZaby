@@ -17,6 +17,332 @@ html {
   min-height: 100%;
 }
 
+
+
+
+
 body {
-  margin-bottom: 60px;
+    background-color: #e6ffe6;
+    font-family: 'Segoe UI', sans-serif;
+      margin-bottom: 60px;
+}
+
+
+p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 3rem;
+    color: #2f6032; 
+    margin-bottom: 1em;
+    padding: 10px 15px;
+}
+
+.login-box {
+    width: 320px;
+    margin: 100px auto;
+    padding: 25px;
+    background-color: #caffbf;
+    border: 2px solid #6abf69;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #2e8b57;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #9fdf9f;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #76c893;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #52b788;
+}
+
+.message {
+    margin-top: 15px;
+    color: #cc0000;
+    font-weight: bold;
+}
+
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.welcome-message h2 {
+    color: #2e8b57; /* frog green */
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.blocks-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.block {
+    display: block;
+    width: 200px;
+    padding: 20px;
+    background-color: #c2f0c2;
+    border: 2px solid #76c893;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2e8b57;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.block:hover {
+    background-color: #b1e8b1;
+    color: #1f5e3d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 100, 0, 0.3);
+}
+
+.block:active {
+    transform: scale(0.98);
+}
+
+.user-list-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f0fff4;
+    border: 2px solid #76c893;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.15);
+}
+
+.user-list-container p {
+    text-align: center;
+    color: #2e8b57;
+    margin-bottom: 20px;
+}
+
+.user-list-container h2 {
+    text-align: center;
+    color: #2e8b57;
+    margin-bottom: 20px;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #c0e6c0;
+}
+
+.user-table th {
+    background-color: #d8f8d8;
+    color: #2e8b57;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-add {
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    background-color: #c2f0c2;
+    border: 1px solid #76c893;
+    color: #2e8b57;
+    margin-right: 10px;
+}
+
+.btn-edit:hover {
+    background-color: #aee6ae;
+}
+
+.btn-delete {
+    background-color: #f9d3d3;
+    border: 1px solid #e06666;
+    color: #a94442;
+}
+
+.btn-delete:hover {
+    background-color: #f5bcbc;
+}
+
+.btn-add {
+    background-color: #76c893;
+    color: white;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-add:hover {
+    background-color: #5ca87a;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #e1f4e8; /* light greenish */
+    box-shadow: 0 0 10px rgba(0, 80, 0, 0.15);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2f6032;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1c3c1d;
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-buttons button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #45a049;
+}
+
+.cancel-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.frog-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #e6ffe6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    color: #2a682a;
+    margin-bottom: 30px;
+}
+
+.center-box {
+    margin-top: 30px;
+}
+
+.button-large, .button-leaderboard {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.button-large:hover, .button-leaderboard:hover {
+    background-color: #388E3C;
+}
+
+.frog-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 60%;
+    background-color: #f0fff0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.frog-table th, .frog-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.frog-table th {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.button-action {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #81c784;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.button-action:hover {
+    background-color: #66bb6a;
 }

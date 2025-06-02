@@ -1,0 +1,20 @@
+
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="dashboard-container">
+    <div class="welcome-message">
+            <h2>Welcome, @Context.Session.GetString("Username")</h2>
+    </div>
+
+    <div class="blocks-container">
+        <a class="block" asp-area="" asp-controller="Admin"
+                                        asp-action="Users">Manage Users here</a>
+            
+        <a class="block" asp-area="" asp-controller="Admin"
+                                        asp-action="Items">Manage Items here</a>
+           
+            
+        
+    </div>
+</div>

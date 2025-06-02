@@ -1,0 +1,54 @@
+@model BojoweZaby.Models.ItemModel
+
+@{
+    ViewData["Title"] = "Edit Existing Item";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="form-container">
+    <h2>Edit Item</h2>
+
+    <form asp-action="EditItem" method="post">
+        <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input name="itemName" type="text" value="@Model.Name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="itemRarity">Item Rarity</label>
+            <select name="itemRarity" required >
+
+                @foreach (var rarity in ViewBag.ItemRarities)
+                {
+                    if(Model.Rarity == rarity){
+                        <option value="@rarity" selected>@rarity</option>
+                    }else{
+                        <option value="@rarity">@rarity</option>
+                    }
+                }
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="itemAttack">Base Attack</label>
+            <input name="itemAttack" type="number" value="@Model.BaseAttack" required />
+        </div>
+
+        <div class="form-group">
+            <label for="itemDefense">Base Defense</label>
+            <input name="itemDefense" type="number" value="@Model.BaseDefense" required />
+        </div>
+
+        <div class="form-group">
+            <label for="itemDesc">Description</label>
+            <textarea name="itemDesc" required>@Model.Description</textarea>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit">Confirm Edit</button>
+            <a class="cancel-link" asp-action="Users">Cancel</a>
+        </div>
+    </form>
+</div>
