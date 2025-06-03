@@ -16,22 +16,20 @@
     }
     else
     {   
-        
-        <div class="frog-info-section">
-            <table class="frog-table">
-                <tr><th>Name</th><td>@Model.Name</td></tr>
-                <tr><th>HP</th><td>@Model.HP</td></tr>
-                <tr><th>Base Attack</th><td>@Model.BaseAttack</td></tr>
-                <tr><th>Base Defense</th><td>@Model.BaseDefense</td></tr>
-                <tr><th>Class</th><td>@Model.ClassId</td></tr>
-            </table>
+        <table class="frog-table">
+            <tr><th>Name</th><td>@Model.Name</td></tr>
+            <tr><th>HP</th><td>@Model.HP</td></tr>
+            <tr><th>Base Attack</th><td>@Model.BaseAttack</td></tr>
+            <tr><th>Base Defense</th><td>@Model.BaseDefense</td></tr>
+            <tr><th>Class</th><td>@Model.ClassId</td></tr>
+        </table>
 
-            <div class="action-buttons">
-                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Attack">Attack</a>
-                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Explore">Explore</a>
-                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Equipment">Show Equipment</a>
-            </div>
+        <div class="action-buttons">
+            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Attack">Attack</a>
+            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Explore">Explore</a>
+            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Equipment">Show Equipment</a>
         </div>
+      
     }
 
     <div class="center-box">

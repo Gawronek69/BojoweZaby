@@ -125,8 +125,25 @@ public class PlayerController : Controller
         {
             return RedirectToAction("Dashboard", "Player");
         }
+
+        var randomItem = _context.retriveRandomItem();
+
+        if (randomItem != null)
+        {
+            _context.Equipment.Add(new EquipmentModel
+            {
+                FrogId = frog.FrogId,
+                Frog = frog,
+                ItemId = randomItem.ItemId,
+                Item = randomItem
+            });
+            _context.SaveChanges();
+            return View(randomItem);
+        }
+
+
+        return RedirectToAction("Dashboard", "Player");
         
-        return View();
     }
 
 }

@@ -75,6 +75,18 @@ public class AppDbContext : DbContext
                  select e.Item;
         return eq.ToList();
     }
+
+    public ItemModel? retriveRandomItem()
+    {
+        var items = Items.ToList();
+        if (items.Count == 0)
+        {
+            return null;
+        }
+        Random random = new Random();
+        int index = random.Next(items.Count);
+        return items[index];
+    }
     
     
 

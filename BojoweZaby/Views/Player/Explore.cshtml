@@ -1,0 +1,23 @@
+@model BojoweZaby.Models.ItemModel
+
+@{
+    ViewData["Title"] = "Explore";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<div class="frog-container">
+
+    <h2 class="welcome-title">You just found an item!</h2>
+    <table class="frog-table">
+        <tr><th>Name</th><td>@Model.Name</td></tr>
+        <tr><th>Rarity</th><td>@Model.Rarity</td></tr>
+        <tr><th>Base Attack</th><td>@Model.BaseAttack</td></tr>
+        <tr><th>Base Defense</th><td>@Model.BaseDefense</td></tr>
+        <tr><th>Description</th><td>@Model.Description</td></tr>
+    </table>
+    <div class="action-buttons"></div>
+        <a class="button-action" asp-area="" asp-controller="Player" asp-action="Dashboard">Nice</a>
+    </div>
+</div>
