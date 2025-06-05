@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<div class="modal-overlay">
+    <div class="modal-content">
+        @if (@ViewBag.Win != null)
+        {
+            <h2>@ViewBag.Win</h2>
+
+            @if (ViewBag.Eq == null || ViewBag.Eq.Count == 0)
+            {
+                <p>No items gained 💧🐸💧</p>
+            }
+            else
+            {
+                <div class="scroll-table-wrapper">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Rarity</th>
+                                <th>Base Attack</th>
+                                <th>Base Defense</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.Eq)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Rarity</td>
+                                    <td>@item.BaseAttack</td>
+                                    <td>@item.BaseDefense</td>
+                                    <td>@item.Description</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        }else{
+            <h2>@ViewBag.Attack</h2>
+        }
+
+
+        <a class="button-action" asp-area="" asp-controller="Player" asp-action="Dashboard">Close</a>
+    </div>
+</div>

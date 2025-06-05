@@ -7,6 +7,8 @@ public abstract class FrogClassT
     public int BaseAttack { get; set; }
     public int BaseDefense { get; set; }
     public int BaseHP { get; set; }
+
+    public string ImgPath { get; set; } = "";
     public abstract void SpecialAbility();
 
 }

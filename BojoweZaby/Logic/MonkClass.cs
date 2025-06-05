@@ -11,6 +11,7 @@ public class MonkClass : FrogClassT
         BaseAttack = 20;
         BaseDefense = -5;
         BaseHP = 350;
+        ImgPath = "static/zabson_w_pynie_monk.png"; // Path to the monk image
     }
 
     public override void SpecialAbility()

@@ -245,6 +245,26 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\kacpe\\OneDrive\\Pulpit\\vsc\\Laby\\projekt\\BojoweZaby\\wwwroot\\static\\zabson_w_pynie_dead.png",
+      "PackagePath": "staticwebassets\\static\\zabson_w_pynie_dead.png"
+    },
+    {
+      "Id": "C:\\Users\\kacpe\\OneDrive\\Pulpit\\vsc\\Laby\\projekt\\BojoweZaby\\wwwroot\\static\\zabson_w_pynie_mag.png",
+      "PackagePath": "staticwebassets\\static\\zabson_w_pynie_mag.png"
+    },
+    {
+      "Id": "C:\\Users\\kacpe\\OneDrive\\Pulpit\\vsc\\Laby\\projekt\\BojoweZaby\\wwwroot\\static\\zabson_w_pynie_monk.png",
+      "PackagePath": "staticwebassets\\static\\zabson_w_pynie_monk.png"
+    },
+    {
+      "Id": "C:\\Users\\kacpe\\OneDrive\\Pulpit\\vsc\\Laby\\projekt\\BojoweZaby\\wwwroot\\static\\zabson_w_pynie_rycerz.png",
+      "PackagePath": "staticwebassets\\static\\zabson_w_pynie_rycerz.png"
+    },
+    {
+      "Id": "C:\\Users\\kacpe\\OneDrive\\Pulpit\\vsc\\Laby\\projekt\\BojoweZaby\\wwwroot\\static\\zabson_w_pynie_ucznik.png",
+      "PackagePath": "staticwebassets\\static\\zabson_w_pynie_ucznik.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BojoweZaby.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

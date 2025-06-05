@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using BojoweZaby.Models;
+using System.ComponentModel.DataAnnotations;
+namespace BojoweZaby.Models;
 
 public class EquipmentModel
 {
+    [Key]
     public int Id { get; set; }
     public int FrogId { get; set; } 
 

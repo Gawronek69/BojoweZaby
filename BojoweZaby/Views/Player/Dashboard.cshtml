@@ -1,6 +1,7 @@
 @model BojoweZaby.Models.FrogModel
 @{
     ViewData["Title"] = "Frog Arena";
+    bool isFrogDead = Model?.HP <= 0;
 }
 
 <link rel="stylesheet" href="~/css/frogPage.css" />
@@ -15,21 +16,54 @@
         </div>
     }
     else
-    {   
+    {
+        @if (@Model.HP <= 0)
+        {
+            <h3>@Model.Name nie żyje</h3>
+        }
+        else
+        {
+            <h3>@Model.Name</h3>
+        }
+        <img src="~/@Model.ImgPath" asp-append-version="true" />
         <table class="frog-table">
-            <tr><th>Name</th><td>@Model.Name</td></tr>
-            <tr><th>HP</th><td>@Model.HP</td></tr>
-            <tr><th>Base Attack</th><td>@Model.BaseAttack</td></tr>
-            <tr><th>Base Defense</th><td>@Model.BaseDefense</td></tr>
-            <tr><th>Class</th><td>@Model.ClassId</td></tr>
+            <tr>
+                <th>HP</th>
+                <td>@Model.HP/@Model.MaxHp</td>
+            </tr>
+            <tr>
+                <th>Base Attack</th>
+                <td>@Model.BaseAttack +(@ViewBag.EffectiveAttack)</td>
+            </tr>
+            <tr>
+                <th>Base Defense</th>
+                <td>@Model.BaseDefense +(@ViewBag.EffectiveDefense)</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>@Model.ClassId</td>
+            </tr>
         </table>
+        if (isFrogDead)
+        {
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <h2>@Model.Name is dead 🐸💀</h2>
+                        <a class="close-btn" asp-action="CreateFrog" asp-controller="Player" asp-area="">Create New Frog</a>
+                        <a class="close-btn" asp-action="DeleteFrog" asp-controller="Player" asp-area="">Surrender</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="action-buttons">
+                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Attack">Attack</a>
+                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Explore">Explore</a>
+                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Equipment">Show Equipment</a>
+            </div>
+        }
 
-        <div class="action-buttons">
-            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Attack">Attack</a>
-            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Explore">Explore</a>
-            <a class="button-action" asp-area="" asp-controller="Player" asp-action="Equipment">Show Equipment</a>
-        </div>
-      
+
     }
 
     <div class="center-box">

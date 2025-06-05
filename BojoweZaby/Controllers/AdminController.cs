@@ -18,9 +18,9 @@ public class AdminController : Controller
 
     public IActionResult Dashboard()
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         return View();
@@ -28,9 +28,9 @@ public class AdminController : Controller
 
     public IActionResult Users()
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         return View(_context.Accounts.ToList());
@@ -38,9 +38,9 @@ public class AdminController : Controller
 
     public IActionResult Items()
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         return View(_context.Items.ToList());
@@ -49,9 +49,9 @@ public class AdminController : Controller
     public IActionResult ItemCreation()
     {
 
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         return View();
@@ -62,6 +62,10 @@ public class AdminController : Controller
     public IActionResult ItemCreation(IFormCollection form)
     {
         //Validation on frontend
+        if(checkCredentials() != null)
+        {
+            return checkCredentials();
+        }
 
         string name = form["itemName"];
         string? rarity = form["itemRarity"];
@@ -79,9 +83,9 @@ public class AdminController : Controller
 
     public IActionResult DeleteItem(int id)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var item = _context.Items.Find(id);
@@ -95,9 +99,9 @@ public class AdminController : Controller
 
     public IActionResult EditItem(int id)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var item = _context.Items.Find(id);
@@ -114,9 +118,9 @@ public class AdminController : Controller
     [HttpPost]
     public IActionResult EditItem(int id, IFormCollection form)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var item = _context.Items.Find(id);
@@ -145,9 +149,9 @@ public class AdminController : Controller
 
     public IActionResult UserCreation()
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         return View();
@@ -156,9 +160,9 @@ public class AdminController : Controller
     [HttpPost]
     public IActionResult UserCreation(IFormCollection form)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
         //TODO
         string? username = form["username"];
@@ -174,9 +178,9 @@ public class AdminController : Controller
 
     public IActionResult DeleteUser(int id)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var user = _context.Accounts.Find(id);
@@ -190,9 +194,9 @@ public class AdminController : Controller
 
     public IActionResult EditUser(int id)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var user = _context.Accounts.Find(id);
@@ -206,9 +210,9 @@ public class AdminController : Controller
     [HttpPost]
      public IActionResult EditUser(int id, IFormCollection form)
     {
-        if (HttpContext.Session.GetString("Login") == null)
+        if(checkCredentials() != null)
         {
-            return RedirectToAction("Login", "Home");
+            return checkCredentials();
         }
 
         var user = _context.Accounts.Find(id);
@@ -229,6 +233,20 @@ public class AdminController : Controller
         _context.SaveChanges();
 
         return RedirectToAction("Users");
+    }
+
+    private IActionResult checkCredentials(){
+        if (HttpContext.Session.GetString("Login") == null)
+        {
+            return RedirectToAction("Login", "Home");
+        }
+
+        if (HttpContext.Session.GetString("AccountType") != AccountType.Admin.ToString())
+        {
+            return RedirectToAction("Dashboard", "Player");
+        }
+
+        return null;
     }
     
 }

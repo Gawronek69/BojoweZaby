@@ -11,7 +11,6 @@ public class FrogModel
     [Required]
     public string Name { get; set; } = "";
     [Required]
-    [Range(0, 10000, ErrorMessage = "HP must be between 0 and 10000.")]
     public int HP { get; set; } = 0;
     [Required]
     public int BaseAttack { get; set; } = 0;
@@ -22,9 +21,15 @@ public class FrogModel
     [Required]
     public int AccountId { get; set; }
 
+    [Required]  
+    public string ImgPath { get; set; }
+
     [Required]
     [ForeignKey("AccountId")]
     public AccountModel Account { get; set; }
+
+    [Required]
+    public int MaxHp { get; set; }
 
     public FrogModel() { }
     public FrogModel(int frogId, string name, int hp, int baseAttack, int baseDefense, FrogClass frogClass, int accountId, AccountModel account)

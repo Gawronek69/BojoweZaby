@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BojoweZaby")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+242e01e875000d35ebbd9003b6d6d56846f16a62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9902d776f2476afdd3a759e592bf56d2cfef86b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BojoweZaby")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BojoweZaby")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

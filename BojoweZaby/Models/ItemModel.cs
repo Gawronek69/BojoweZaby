@@ -16,7 +16,11 @@ public class ItemModel
     [Required]
     public int BaseDefense { get; set; }
 
+
     public string Description { get; set; } = "";
+
+    [Required]
+    public string ImgPath { get; set; } = "";
 
 
     public ItemModel() { }

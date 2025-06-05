@@ -1,4 +1,4 @@
-@model List<BojoweZaby.Models.ItemModel>
+@model List<BojoweZaby.Models.EquipmentModel>
 @{
     ViewData["Title"] = "Equipment";
 }
@@ -29,11 +29,14 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Rarity</td>
-                    <td>@item.BaseAttack</td>
-                    <td>@item.BaseDefense</td>
-                    <td>@item.Description</td>
+                    <td>@item.Item.Name</td>
+                    <td>@item.Item.Rarity</td>
+                    <td>@item.Item.BaseAttack</td>
+                    <td>@item.Item.BaseDefense</td>
+                    <td>@item.Item.Description</td>
+                    <td>
+                        <a class="button-action" asp-action="EatItem" asp-controller="Player" asp-route-eqId="@item.Id">Eat</a>
+                    </td>
                 </tr>
             }
         </tbody>

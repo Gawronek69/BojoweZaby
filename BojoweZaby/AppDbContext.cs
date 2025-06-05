@@ -68,11 +68,12 @@ public class AppDbContext : DbContext
         return Frogs.Include(f => f.Account).FirstOrDefault(f => f.Account.Login == login);
     }
 
-    public List<ItemModel> GetItemsByFrogId(int frogId)
+    public List<EquipmentModel> GetItemsByFrogId(int frogId)
     {
-        var eq = from e in Equipment
-                 where e.FrogId == frogId
-                 select e.Item;
+        var eq = Equipment
+            .Where(e => e.FrogId == frogId)
+            .Include(e => e.Item)
+            .ToList();
         return eq.ToList();
     }
 
@@ -87,7 +88,67 @@ public class AppDbContext : DbContext
         int index = random.Next(items.Count);
         return items[index];
     }
+
+    public FrogModel? GetRandomFrog(string login)
+    {
+        var frogs = Frogs.Where(f => f.HP > 0).ToList();
+        if (frogs.Count <= 1)
+        {
+            return null;
+        }
+        FrogModel? accountFrog = GetFrogByOwnerLogin(login);
+        Random random = new Random();
+        if (accountFrog == null)
+        {
+            return null;
+        }
+        frogs.Remove(accountFrog);
+        int index = random.Next(frogs.Count);
+        return frogs[index];
+    }
+
+    public int frogPower(FrogModel frog)
+    {
+        var frogEq = Equipment
+            .Where(e => e.FrogId == frog.FrogId).Select(e => e.Item).ToList();
+        return frogEq.Sum(i => i.BaseAttack);
+    }
+
+    public int frogDefence(FrogModel frog)
+    {
+        var frogEq = Equipment
+            .Where(e => e.FrogId == frog.FrogId).Select(e => e.Item).ToList();
+        return frogEq.Sum(i => i.BaseDefense);
+    }
+
+    public void transferEq(FrogModel attacker, FrogModel defender)
+    {
+        var defenderEq = Equipment.Where(e => e.FrogId == defender.FrogId).ToList();
+        foreach (var eq in defenderEq)
+        {
+            eq.FrogId = attacker.FrogId;
+            eq.Frog = attacker;
+        }
+        SaveChanges();
+    }
+
+    public List<ItemModel?> getFrogEq(FrogModel frog)
+    {
+        return Equipment
+            .Where(e => e.FrogId == frog.FrogId)
+            .Select(e => e.Item)
+            .ToList();
+    }
+
+    public EquipmentModel? getEquipmentById(int id)
+    {
+        return Equipment.Include(e => e.Item).FirstOrDefault(e => e.Id == id);
+    }
     
+    public ItemModel? getItemById(int id)
+    {
+        return Items.FirstOrDefault(i => i.ItemId == id);
+    }
     
 
 

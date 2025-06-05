@@ -346,3 +346,56 @@ p {
 .button-action:hover {
     background-color: #66bb6a;
 }
+
+.welcome-message h3 {
+    color: #2e8b57;
+    font-size: 1rem;
+    margin-bottom: -10px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #caffbf;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+    text-align: center;
+}
+
+.scroll-table-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.close-btn {
+    margin-top: 20px;
+    background-color: #76c893;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+
+.close-btn:hover {
+    background-color: #52b788;
+}
