@@ -5,25 +5,25 @@
 namespace BojoweZaby.Migrations
 {
     /// <inheritdoc />
-    public partial class migrate5 : Migration
+    public partial class migrate9 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "MaxHp",
-                table: "FrogModel",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "Round",
+                table: "Fights");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "MaxHp",
-                table: "FrogModel");
+            migrationBuilder.AddColumn<int>(
+                name: "Round",
+                table: "Fights",
+                type: "INTEGER",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }

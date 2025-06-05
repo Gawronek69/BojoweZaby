@@ -144,10 +144,22 @@ public class AppDbContext : DbContext
     {
         return Equipment.Include(e => e.Item).FirstOrDefault(e => e.Id == id);
     }
-    
+
     public ItemModel? getItemById(int id)
     {
         return Items.FirstOrDefault(i => i.ItemId == id);
+    }
+    
+    public void AddFight(FrogModel frog1, FrogModel frog2)
+    {
+        Fights.Add(new FightModel
+        {
+            Frog1Id = frog1.FrogId,
+            Frog2Id = frog2.FrogId,
+            Frog1 = frog1,
+            Frog2 = frog2
+        });
+        SaveChanges();
     }
     
 

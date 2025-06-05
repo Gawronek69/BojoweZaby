@@ -97,6 +97,7 @@ public class PlayerController : Controller
             Account = account,
             ImgPath = frogClassT.ImgPath
         });
+
         _context.SaveChanges();
 
 
@@ -161,7 +162,7 @@ public class PlayerController : Controller
 
         FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
         var enemyFrog = _context.GetRandomFrog(HttpContext.Session.GetString("Login"));
-
+        _context.AddFight(frog, enemyFrog);
         if (Fight.attackFrog(frog, enemyFrog, _context))
         {
             var gainedEq = _context.getFrogEq(enemyFrog);
@@ -177,21 +178,20 @@ public class PlayerController : Controller
         return View("Attack", "Player");
     }
 
-    public IActionResult Leaderboard()
+    public IActionResult Fights()
     {
         if (checkCredentials() != null)
         {
             return checkCredentials();
         }
-
-        var frogs = _context.Frogs
-            .Include(f => f.Account)
-            .OrderByDescending(f => f.HP)
-            .ThenByDescending(f => f.BaseAttack)
-            .ThenByDescending(f => f.BaseDefense)
+        FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+        var fights = _context.Fights
+            .Include(f => f.Frog1)
+            .Include(f => f.Frog2)
+            .Where(f => f.Frog1.FrogId == frog.FrogId || f.Frog2.FrogId == frog.FrogId)
             .ToList();
 
-        return View(frogs);
+        return View(fights);
     }
 
     public IActionResult DeleteFrog()

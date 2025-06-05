@@ -49,8 +49,8 @@
             <div class="modal-overlay">
                 <div class="modal-content">
                     <h2>@Model.Name is dead 🐸💀</h2>
-                        <a class="close-btn" asp-action="CreateFrog" asp-controller="Player" asp-area="">Create New Frog</a>
-                        <a class="close-btn" asp-action="DeleteFrog" asp-controller="Player" asp-area="">Surrender</a>
+                    <a class="close-btn" asp-action="CreateFrog" asp-controller="Player" asp-area="">Create New Frog</a>
+                    <a class="close-btn" asp-action="DeleteFrog" asp-controller="Player" asp-area="">Surrender</a>
                 </div>
             </div>
         }
@@ -60,13 +60,13 @@
                 <a class="button-action" asp-area="" asp-controller="Player" asp-action="Attack">Attack</a>
                 <a class="button-action" asp-area="" asp-controller="Player" asp-action="Explore">Explore</a>
                 <a class="button-action" asp-area="" asp-controller="Player" asp-action="Equipment">Show Equipment</a>
+                <a class="button-action" asp-area="" asp-controller="Player" asp-action="Fights">Fights</a>
+
             </div>
         }
 
 
     }
 
-    <div class="center-box">
-        <a class="button-leaderboard" asp-area="" asp-controller="Player" asp-action="Leaderboard">Leaderboard</a>
-    </div>
+
 </div>

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="~/css/site.css" />
+@model List<BojoweZaby.Models.FightModel>
+
+<div class="user-list-container">
+    <h2>Fights History</h2>
+    @if (Model.Count == 0)
+    {
+        <p>No fights found 🐸⚔️</p>
+    }
+    else
+    {
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Attacker</th>
+                    <th>Defender</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fight in Model)
+                {
+                    <tr>
+                        <td>@fight.Frog1.Name</td>
+                        <td>@fight.Frog2.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

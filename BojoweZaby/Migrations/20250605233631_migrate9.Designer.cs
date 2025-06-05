@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BojoweZaby.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250605100020_migrate4")]
-    partial class migrate4
+    [Migration("20250605233631_migrate9")]
+    partial class migrate9
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,6 +44,27 @@ namespace BojoweZaby.Migrations
                     b.ToTable("AccountModel");
                 });
 
+            modelBuilder.Entity("BojoweZaby.Models.EquipmentModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FrogId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FrogId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Equipment");
+                });
+
             modelBuilder.Entity("BojoweZaby.Models.FrogModel", b =>
                 {
                     b.Property<int>("FrogId")
@@ -68,6 +89,9 @@ namespace BojoweZaby.Migrations
                     b.Property<string>("ImgPath")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("MaxHp")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -112,37 +136,10 @@ namespace BojoweZaby.Migrations
                     b.ToTable("ItemModel");
                 });
 
-            modelBuilder.Entity("EquipmentModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FrogId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FrogId");
-
-                    b.HasIndex("ItemId");
-
-                    b.ToTable("Equipment");
-                });
-
             modelBuilder.Entity("FightModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Account1Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Account2Id")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Frog1Id")
@@ -151,17 +148,7 @@ namespace BojoweZaby.Migrations
                     b.Property<int>("Frog2Id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Round")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("WinnerId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Account1Id");
-
-                    b.HasIndex("Account2Id");
 
                     b.HasIndex("Frog1Id");
 
@@ -170,18 +157,7 @@ namespace BojoweZaby.Migrations
                     b.ToTable("Fights");
                 });
 
-            modelBuilder.Entity("BojoweZaby.Models.FrogModel", b =>
-                {
-                    b.HasOne("BojoweZaby.Models.AccountModel", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("EquipmentModel", b =>
+            modelBuilder.Entity("BojoweZaby.Models.EquipmentModel", b =>
                 {
                     b.HasOne("BojoweZaby.Models.FrogModel", "Frog")
                         .WithMany()
@@ -200,20 +176,19 @@ namespace BojoweZaby.Migrations
                     b.Navigation("Item");
                 });
 
+            modelBuilder.Entity("BojoweZaby.Models.FrogModel", b =>
+                {
+                    b.HasOne("BojoweZaby.Models.AccountModel", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
             modelBuilder.Entity("FightModel", b =>
                 {
-                    b.HasOne("BojoweZaby.Models.AccountModel", "Account1")
-                        .WithMany()
-                        .HasForeignKey("Account1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BojoweZaby.Models.AccountModel", "Account2")
-                        .WithMany()
-                        .HasForeignKey("Account2Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BojoweZaby.Models.FrogModel", "Frog1")
                         .WithMany()
                         .HasForeignKey("Frog1Id")
@@ -225,10 +200,6 @@ namespace BojoweZaby.Migrations
                         .HasForeignKey("Frog2Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Account1");
-
-                    b.Navigation("Account2");
 
                     b.Navigation("Frog1");
 

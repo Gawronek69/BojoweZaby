@@ -139,29 +139,13 @@ namespace BojoweZaby.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Account1Id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Account2Id")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Frog1Id")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Frog2Id")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Round")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("WinnerId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Account1Id");
-
-                    b.HasIndex("Account2Id");
 
                     b.HasIndex("Frog1Id");
 
@@ -202,18 +186,6 @@ namespace BojoweZaby.Migrations
 
             modelBuilder.Entity("FightModel", b =>
                 {
-                    b.HasOne("BojoweZaby.Models.AccountModel", "Account1")
-                        .WithMany()
-                        .HasForeignKey("Account1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BojoweZaby.Models.AccountModel", "Account2")
-                        .WithMany()
-                        .HasForeignKey("Account2Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BojoweZaby.Models.FrogModel", "Frog1")
                         .WithMany()
                         .HasForeignKey("Frog1Id")
@@ -225,10 +197,6 @@ namespace BojoweZaby.Migrations
                         .HasForeignKey("Frog2Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Account1");
-
-                    b.Navigation("Account2");
 
                     b.Navigation("Frog1");
 
