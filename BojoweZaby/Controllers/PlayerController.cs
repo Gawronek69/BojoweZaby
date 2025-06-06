@@ -44,6 +44,12 @@ public class PlayerController : Controller
             return checkCredentials();
         }
 
+        FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+        if (frog != null)
+        {
+            RedirectToAction("Dashboard", "Player");
+        }
+
         ViewBag.ClassTypes = Enum.GetValues(typeof(FrogClass));
         Console.WriteLine("Available Frog Classes: " + string.Join(", ", ViewBag.ClassTypes));
         return View();
@@ -55,6 +61,12 @@ public class PlayerController : Controller
         if (checkCredentials() != null)
         {
             return checkCredentials();
+        }
+
+        FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+        if (frog != null)
+        {
+            RedirectToAction("Dashboard", "Player");
         }
 
         string name = form["Name"];
@@ -111,6 +123,13 @@ public class PlayerController : Controller
             return checkCredentials();
         }
 
+        FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+        if (frog.HP <= 0)
+        {
+            return View("Dashboard", "Player");
+        }
+
+
         List<EquipmentModel> items = _context.GetItemsByFrogId(int.Parse(HttpContext.Session.GetString("FrogId")));
         if (items == null)
         {
@@ -128,6 +147,12 @@ public class PlayerController : Controller
         }
 
         FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+
+        if (frog.HP <= 0)
+        {
+            return View("Dashboard", "Player");
+        }
+
         if (frog == null)
         {
             return RedirectToAction("Dashboard", "Player");
@@ -161,6 +186,12 @@ public class PlayerController : Controller
         }
 
         FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+
+        if (frog.HP <= 0)
+        {
+            return View("Dashboard", "Player");
+        }
+
         var enemyFrog = _context.GetRandomFrog(HttpContext.Session.GetString("Login"));
         _context.AddFight(frog, enemyFrog);
         if (Fight.attackFrog(frog, enemyFrog, _context))
@@ -184,7 +215,17 @@ public class PlayerController : Controller
         {
             return checkCredentials();
         }
+
+
+
+
         FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+
+        if (frog.HP <= 0)
+        {
+            return View("Dashboard", "Player");
+        }
+
         var fights = _context.Fights
             .Include(f => f.Frog1)
             .Include(f => f.Frog2)
@@ -223,6 +264,13 @@ public class PlayerController : Controller
         }
         Console.WriteLine($"Eating item with ID: {eqId}");
         FrogModel? frog = _context.GetFrogByOwnerLogin(HttpContext.Session.GetString("Login"));
+
+
+        if (frog.HP <= 0)
+        {
+            return View("Dashboard", "Player");
+        }
+
         if (frog == null)
         {
             return RedirectToAction("Dashboard", "Player");
@@ -257,7 +305,7 @@ public class PlayerController : Controller
 
         return null;
     }
-    
-    
+
+
 
 }

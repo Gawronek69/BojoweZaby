@@ -122,7 +122,7 @@ public class AdminController : Controller
         {
             return checkCredentials();
         }
-
+        Console.WriteLine("Editing item with ID: " + id);
         var item = _context.Items.Find(id);
         if (item == null)
         {
@@ -214,6 +214,7 @@ public class AdminController : Controller
         {
             return checkCredentials();
         }
+        Console.WriteLine("Editing user with ID: " + id);
 
         var user = _context.Accounts.Find(id);
         if (user == null)

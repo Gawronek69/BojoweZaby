@@ -9,7 +9,7 @@
 <div class="form-container">
     <h2>Edit User</h2>
 
-    <form asp-action="EditUser" method="post">
+    <form asp-action="EditUser" method="post" asp-route-id="=@Model.AccountId">
         <div class="form-group">
             <label for="username">Username</label>
             <input name="username" type="text" value="@Model.Username" required />

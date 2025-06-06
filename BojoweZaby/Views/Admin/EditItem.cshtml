@@ -9,7 +9,7 @@
 <div class="form-container">
     <h2>Edit Item</h2>
 
-    <form asp-action="EditItem" method="post">
+    <form asp-action="EditItem" method="post" asp-route-id = "@Model.ItemId">
         <div class="form-group">
             <label for="itemName">Item Name</label>
             <input name="itemName" type="text" value="@Model.Name" required />
@@ -48,7 +48,7 @@
 
         <div class="form-buttons">
             <button type="submit">Confirm Edit</button>
-            <a class="cancel-link" asp-action="Users">Cancel</a>
+            <a class="cancel-link" asp-action="Items">Cancel</a>
         </div>
     </form>
 </div>
